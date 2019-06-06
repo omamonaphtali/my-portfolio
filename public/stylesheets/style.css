@@ -1,14 +1,34 @@
+/* Responsive Web Design */
+* {
+  box-sizing: border-box;
+  position: relative; /* required so that  the z-index feature can work*/
+}
+.row {
+  width: 100%;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+[class*="col-sm-"], [class*="col-md-"] {
+  width: 100%; /* set the col grids in the sm and md be 100% in small mobile devices/screens*/
+}
+/* //Responsive Web Design */
+
 body {
-  padding: 50px;
+  padding: 50px 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #c5d4c6;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 2 1'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23c5d4c6'/%3E%3Cstop offset='1' stop-color='%2333ffff'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23c2ffe1' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23c2ffe1' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2' y2='2' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23c2ffe1' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23c2ffe1' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='2' height='1'/%3E%3Cg %3E%3Cpolygon fill='url(%23b)' points='0 1 0 0 2 0'/%3E%3Cpolygon fill='url(%23c)' points='2 1 2 0 0 0'/%3E%3C/g%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: cover;
 }
-* {
-  position: relative; /* required so that  the z-index feature can work*/
-}
+
 p {
   color: #222121;
 }
@@ -36,9 +56,9 @@ img.img-responsove {
   position: absolute;
   text-align: center;
   width: 100%;
-  margin-top: -50px;
+  margin-top: -100px;
 }
-.title h1 {
+.title h1, .title h2 {
   font-size: 50px;
   color: #808080;
   font-family: 'Playfair Display', serif;
@@ -52,9 +72,18 @@ main, #about, .btn {
 main {
   margin-top: 0;
   margin-bottom: 40px;
+  font-size: 20px;
+}
+.main div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 #about div {
-  padding: 20px;
+  margin: -50px 5px 50px;
+  padding: 15px;
   box-shadow: grey 0 0 2px;
 }
 #about p {
@@ -71,7 +100,7 @@ main {
 .service {
   text-align: center;
   text-align: center;
-  margin: 30px 15px;
+  margin: 15px 5px;
   box-shadow: black 0 0 3px;
   padding: 15px;
 }
@@ -79,12 +108,32 @@ main {
   font-size: 50px;
 }
 
-
-@media screen and (min-width: 400px) {
-  .title {margin-top: -150px;}
-  .title h1 {
-    font-size: 100px;
+@media only screen and (min-width: 577px) {
+  /* tablets and smartphones on landscape */
+  .col-sm-4 {width: 33.33%;}
+  .col-sm-6 {width: 48%;}
+  .col-sm-8 {width: 75%;}
+  body {padding-left: 15px; padding-right: 15px;}
+  section {margin-top: 20px;}
+  .title {margin-top: -125px;}
+  .title h1 {font-size: 75px;}
+  .img-responsive {width: 75%;}
+  .main div p {font-size: 30px;}
+  #services {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
+  .service {margin: 5px;}
+}
+
+@media only screen and (min-width: 769px) {
+  /* desktops */
+  .col-md-3 {width: 25%;}
+  .col-md-4 {width: 30%;}
+  .col-md-6 {width: 50%;}
+  .col-md-8 {width: 66.67%;}
+  .title {margin-top: -150px;}
+  .title h1 {font-size: 100px;}
   main {
     flex-direction: row;
     max-height: 500px;
@@ -107,23 +156,13 @@ main {
     margin: 15px 0;
     font-family: 'Bree Serif', serif;
   }
-  main div .btn-primary {
-    font-size: 30px;
-  }
+  main div .btn-primary {font-size: 30px;}
   
   /* ABOUT SECTION */
-  #about {
-    flex-direction: row-reverse;
-  }
-  #about div {
-    max-width: 40%;
-  }
-  #about p {
-    font-size: 20px;
-  }
+  #about {flex-direction: row-reverse;}
+  #about p {font-size: 20px;}
   
   /* SERVICES/SKILLS */
-  #services {
-    flex-direction: row;
-  }
+  #services {flex-direction: row;}
+  .service {margin: 30px 15px;}
 }
